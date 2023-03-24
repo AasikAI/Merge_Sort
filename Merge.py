@@ -27,7 +27,7 @@ def printl(arr):
         print(arr[i], end=" ")
     print("\r")
 if __name__ == '__main__':
-    arr = [5,2,87,3,8,354,99,13,46,76,324,890,33,7867,89]
+    arr = [5,2,8,3,6]
     print("Unsorted array |")
     printl(arr)
     print("Sorted array |")
