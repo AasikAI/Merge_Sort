@@ -1,36 +1,56 @@
-def merge(arr):
-    if len(arr)>2:
-        mid = len(arr)//2
-        l = arr[:mid]
-        r = arr[mid:]
-        merge(l)
-        merge(r)
-        i = j = k = 0
-        while i<len(l) and j<len(r):
-            if l[i]<=r[j]:
-                arr[k] = l[i]
-                i+=1
-            else:
-                arr[k] = r[j]
-                j+=1
-            k+=1
-        while i<len(l):
-            arr[k] = l[i]
-            i+=1
-            k+=1
-        while j<len(r):
-            arr[k] = r[j]
-            j+=1
-            k+=1
-def printl(arr):
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
-    print("\r")
-if __name__ == '__main__':
-    arr = [5,2,8,3,6]
-    print("Unsorted array |")
-    printl(arr)
-    print("Sorted array |")
-    merge(arr)
-    printl(arr)
+# MergeSort in Python
 
+
+def mergeSort(array):
+    if len(array) > 1:
+
+        #  r is the point where the array is divided into two subarrays
+        r = len(array)//2
+        L = array[:r]
+        M = array[r:]
+
+        # Sort the two halves
+        mergeSort(L)
+        mergeSort(M)
+
+        i = j = k = 0
+
+        # Until we reach either end of either L or M, pick larger among
+        # elements L and M and place them in the correct position at A[p..r]
+        while i < len(L) and j < len(M):
+            if L[i] < M[j]:
+                array[k] = L[i]
+                i += 1
+            else:
+                array[k] = M[j]
+                j += 1
+            k += 1
+
+        # When we run out of elements in either L or M,
+        # pick up the remaining elements and put in A[p..r]
+        while i < len(L):
+            array[k] = L[i]
+            i += 1
+            k += 1
+
+        while j < len(M):
+            array[k] = M[j]
+            j += 1
+            k += 1
+
+
+# Print the array
+def printList(array):
+    for i in range(len(array)):
+        print(array[i], end=" ")
+    print()
+
+
+# Driver program
+if __name__ == '__main__':
+    array = [6, 5, 12, 10, 9, 1]
+
+    mergeSort(array)
+
+    print("Sorted array is: ")
+    printList(array)
